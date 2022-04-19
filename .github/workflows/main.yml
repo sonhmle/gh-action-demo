@@ -6,7 +6,7 @@ jobs:
     name: Upload app of Kobiton
     steps:
       - uses: actions/checkout@v3
-      - uses: sonhmle/test-hello-world-composite-action@v2.2
+      - uses: sonhmle/test-hello-world-composite-action@v2.3
         with:
           kobi_username: ${{ secrets.KOBI_USERNAME }}
           kobi_api_key: ${{ secrets.KOBI_API_KEY }}
