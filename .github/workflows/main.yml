@@ -1,14 +1,15 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  upload-app:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Upload app of Kobiton
     steps:
       - uses: actions/checkout@v3
-      - id: foo
-        uses: sonhmle/test-hello-world-composite-action@v1
+      - uses: sonhmle/test-hello-world-composite-action@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+          kobi_username: ${{ secrets.KOBI_USERNAME }}
+          kobi_api_key: ${{ secrets.KOBI_API_KEY }}
+          upload_app_id: 275643
+          app_name: Android-test
+          app_path: ./app-to-upload/android-test.apk
