@@ -13,7 +13,7 @@ jobs:
       #     upload_app_id: 275643
       #     app_name: Android-test
       #     app_path: ./app-to-upload/android-test.apk
-      - uses: sonhmle/test-hello-world-composite-action@v3
+      - uses: sonhmle/test-hello-world-composite-action@v3.1
         with:
           kobi_username: ${{ secrets.KOBI_USERNAME }}
           kobi_api_key: ${{ secrets.KOBI_API_KEY }}
