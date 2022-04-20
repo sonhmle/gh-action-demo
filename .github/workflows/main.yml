@@ -3,13 +3,31 @@ on: [push]
 jobs:
   upload-app:
     runs-on: ubuntu-latest
-    name: Upload app of Kobiton
+    name: Execute test of Kobiton
     steps:
       - uses: actions/checkout@v3
-      - uses: sonhmle/test-hello-world-composite-action@v2.7
+      # - uses: sonhmle/test-hello-world-composite-action@v2.7
+      #   with:
+      #     kobi_username: ${{ secrets.KOBI_USERNAME }}
+      #     kobi_api_key: ${{ secrets.KOBI_API_KEY }}
+      #     upload_app_id: 275643
+      #     app_name: Android-test
+      #     app_path: ./app-to-upload/android-test.apk
+      - uses: sonhmle/test-hello-world-composite-action@v3
         with:
           kobi_username: ${{ secrets.KOBI_USERNAME }}
           kobi_api_key: ${{ secrets.KOBI_API_KEY }}
-          upload_app_id: 275643
-          app_name: Android-test
-          app_path: ./app-to-upload/android-test.apk
+          executor_url: https://executor-demo.kobiton.com
+          executor_username: ${{ secrets.EXECUTOR_USERNAME }}
+          executor_password: ${{ secrets.EXECUTOR_PASSWORD }}
+          git_repo_url: https://github.com/sonhmle/azure-devops-sample-java-prod.git
+          git_repo_branch: master
+          git_repo_ssh_key: ${{ secrets.GIT_REPO_SSH_KEY }}
+          app_id: kobiton-store:91041
+          use_custom_device: 'true'
+          device_name: 'Galaxy A20s'
+          device_platform_version: '10'
+          device_platform: 'Android'
+          root_directory: '/'
+          command: 'mvn test'
+          wait_for_execution: 'true'
